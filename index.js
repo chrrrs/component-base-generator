@@ -1,15 +1,9 @@
 const fs = require('fs')
-const defineEntryFile = require("./templates/entry")
-const defineMainFile = require("./templates/main")
+const validatePath = require("./utils/validatePath")
+const createFile = require("./utils/createFile")
 
 const path = process.argv[2]
 const name = process.argv[3]
-
-const validatePath = (path) => {
-  const lastCharacter = path[path.length - 1]
-
-  return lastCharacter === "/" || lastCharacter === "\\"
-}
 
 if (path && name) {
 
@@ -19,27 +13,18 @@ if (path && name) {
       console.log("folder was created")
 
       const newPath = `${path}${name}/`
+      const extensions = [".ts", ".tsx", ".scss"]
 
-      fs.writeFile(`${newPath}${name}.ts`, defineEntryFile(name), function (err) {
-        if (err) throw err
-        console.log('Added component entry file')
-      })
-
-      fs.writeFile(`${newPath}${name}.tsx`, defineMainFile(name), function (err) {
-        if (err) throw err
-        console.log('Added component main file')
-      })
-
-      fs.writeFile(`${newPath}${name}.scss`, ``, function (err) {
-        if (err) throw err
-        console.log('Add styles file')
-      })
+      extensions.forEach(extension => {
+        createFile(newPath, name, extension)
+      });
 
     })
 
+  } else {
+    console.log("Please supply valid path")
   }
 
-  console.log("Please supply valid path")
 } else {
   console.log("Please supply both a path and name")
 }
