@@ -1,4 +1,4 @@
-const defineMainFile = (name) => `
+const define = (name) => `
   import React, { FC } from 'react'
 
   type ${name}Props = {
@@ -15,4 +15,4 @@ const defineMainFile = (name) => `
   export default ${name}
 `
 
-module.exports = defineMainFile
+module.exports = define
