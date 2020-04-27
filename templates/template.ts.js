@@ -1,7 +1,6 @@
-const define = (name) => `
-  import './${name}.scss'
+const define = (name) => `import './${name}.scss'
 
-  export { default } from './${name}'
+export { default } from './${name}'
 `
 
 module.exports = define

@@ -1,5 +1,3 @@
-const define = () => `
-  
-`
+const define = () => ``
 
 module.exports = define

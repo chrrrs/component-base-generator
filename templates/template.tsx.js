@@ -1,18 +1,17 @@
-const define = (name) => `
-  import React, { FC } from 'react'
+const define = (name) => `import React, { FC } from 'react'
 
-  type ${name}Props = {
-  }
+type ${name}Props = {
+}
 
-  const ${name}: FC < ${name}Props > = props => {
-    const {} = props
+const ${name}: FC < ${name}Props > = props => {
+  const {} = props
 
-    return ( 
-      <div></div>
-    )
-  }
+  return ( 
+    <div></div>
+  )
+}
 
-  export default ${name}
+export default ${name}
 `
 
 module.exports = define
